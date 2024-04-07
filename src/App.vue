@@ -67,7 +67,10 @@ onUnmounted(() => unsubscribeClientEvents())
 </script>
 
 <template>
-  <div class="flex justify-content-end gap-2 mt-4 mb-4 mr-3">
+  <div class="flex justify-content-between gap-2 mt-4 mb-8 mr-3">
+    <div class="logo" style="height: 0px;">
+      <img src="./assets/warudo.png" alt="Logo" style="width: 250px; margin-top: -62px; margin-left: -25px;" />
+    </div>
     <Button label="Settings" @click="visible = true" />
   </div>
 
