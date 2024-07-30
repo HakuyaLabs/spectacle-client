@@ -5,7 +5,7 @@ import {InteractionType} from "./models.ts";
 
 export const useStore = defineStore('main', () => {
   // const serverUrl = ref(`ws://${window.location.hostname}:19876`)
-  const serverUrl = ref(`wss://owo.vtoku.com`)
+  const serverUrl = ref(`wss://neotoxin4365.uc.r.appspot.com`)
   const client = ref(new SpectacleClient(serverUrl.value).connect())
   const interaction = ref({ type: InteractionType.Empty, id: '' })
   const countdownValue = ref(0)
