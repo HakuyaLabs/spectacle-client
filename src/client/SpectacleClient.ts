@@ -1,6 +1,9 @@
 import {WebSocketClient} from "./WebSocketClient.ts";
 
 export class SpectacleClient extends WebSocketClient {
+  constructor(endpoint: string) {
+    super(endpoint)
+  }
 
   actionHandler(action: string, data: any): boolean {
     switch (action) {

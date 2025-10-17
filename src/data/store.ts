@@ -4,17 +4,10 @@ import {SpectacleClient} from "../client/SpectacleClient.ts";
 import {InteractionType} from "./models.ts";
 
 export const useStore = defineStore('main', () => {
-  // const serverUrl = ref(`ws://${window.location.hostname}:19876`)
-  const serverUrl = ref(`wss://neotoxin4365.uc.r.appspot.com`)
-  const client = ref(new SpectacleClient(serverUrl.value).connect())
+  const serverUrl = import.meta.env.VITE_SERVER_URL || `ws://${window.location.hostname}:19876`
+  const client = ref(new SpectacleClient(serverUrl).connect())
   const interaction = ref({ type: InteractionType.Empty, id: '' })
   const countdownValue = ref(0)
-
-  function reconnectClient() {
-    client.value.disconnect()
-    client.value.endpoint = serverUrl.value
-    client.value.connect()
-  }
 
   const countdownVisible = computed(() => countdownValue.value > 0)
   function startCountdown(duration: number) {
@@ -30,7 +23,6 @@ export const useStore = defineStore('main', () => {
     countdown()
   }
 
-  return { serverUrl, client, interaction,
-    countdownValue, countdownVisible, startCountdown,
-    reconnectClient }
+  return { client, interaction,
+    countdownValue, countdownVisible, startCountdown }
 })
